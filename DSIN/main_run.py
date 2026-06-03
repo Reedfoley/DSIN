@@ -5,8 +5,7 @@ from distutils.util import strtobool
 def main(args):
     
     EnRun(EnConfig(batch_size=args.batch_size,learning_rate=args.lr,seed=args.seed, model=args.model, tasks = args.tasks,
-                                cme_version=args.cme_version, dataset_name=args.dataset,num_hidden_layers=args.num_hidden_layers,
-                                context=args.context, text_context_len=args.text_context_len, audio_context_len=args.audio_context_len))
+                                dataset_name=args.dataset,num_hidden_layers=args.num_hidden_layers))
 
 
 if __name__ == "__main__":
