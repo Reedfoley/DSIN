@@ -23,6 +23,7 @@ class LSTMExpandLayer(nn.Module):
             nn.Linear(hidden_dim * 2, 1),
             nn.Sigmoid()
         )
+        self.output_dim = output_dim
     
     def forward(self, inputs):
         # 输入形状: [batch_size, seq_len, input_dim]
@@ -44,7 +45,7 @@ class LSTMExpandLayer(nn.Module):
         # 我们需要返回 [batch_size, seq_len, output_dim]
         # 因此我们将池化后的特征复制到每个时间步
         batch_size, seq_len, _ = inputs.shape
-        outputs = outputs.unsqueeze(1).expand(batch_size, seq_len, output_dim)
+        outputs = outputs.unsqueeze(1).expand(batch_size, seq_len, self.output_dim)
         return outputs
 
 class DSIN(nn.Module):
